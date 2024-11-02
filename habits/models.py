@@ -28,7 +28,7 @@ class HabitLog(models.Model):
     habit = models.ForeignKey(Habit, on_delete=models.CASCADE, related_name="logs")
     date = models.DateField()
     status = models.CharField(
-        max_length=1, choices=HabitStatus.choices, default=HabitStatus.SKIPPED
+        max_length=1, choices=HabitStatus.choices, default=HabitStatus.COMPLETE
     )
 
     class Meta:
