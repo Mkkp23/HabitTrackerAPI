@@ -4,7 +4,9 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from habits.views import (
     HabitListCreateAPIView,
     HabitRetrieveUpdateDestroyAPIView,
-    HabitLogCreateAPIView,
+    HabitLogCreateListAPIView,
+    HabitlogRetrieveDestroyAPIView,
+    HabitStatisticsView,
 )
 
 urlpatterns = [
@@ -16,5 +18,11 @@ urlpatterns = [
         HabitRetrieveUpdateDestroyAPIView.as_view(),
         name="habit_detail",
     ),
-    path("habits/<int:pk>/log/", HabitLogCreateAPIView.as_view(), name="habit_log"),
+    path("habits/<int:pk>/log/", HabitLogCreateListAPIView.as_view(), name="habit_log"),
+    path("habits/stats/", HabitStatisticsView.as_view(), name="habit_stats"),
+    path(
+        "habitlog/<int:pk>/",
+        HabitlogRetrieveDestroyAPIView.as_view(),
+        name="habitlog_detail",
+    ),
 ]
