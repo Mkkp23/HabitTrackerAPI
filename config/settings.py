@@ -129,3 +129,17 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Set the default User
 AUTH_USER_MODEL = "accounts.User"
+
+# Handle Authentication
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ]
+}
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=5),
+}
